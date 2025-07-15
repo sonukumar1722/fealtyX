@@ -1,16 +1,11 @@
-
 services:
-- type: web
-  name: student-api
-  runtime: go
-  repo: https://github.com/sonukumar1722/fealtyX
-  plan: free
-  envVars:
-    - key: PORT
-      value: 8080
-      sync: false
-  region: oregon
-  buildCommand: go build -o main .
-  startCommand: ./main
-  autoDeployTrigger: commit
-version: "1"
+  - type: web
+    name: student-api
+    env: go
+    plan: free
+    buildCommand: go build -o main .
+    startCommand: ./main
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 8080

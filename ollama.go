@@ -48,7 +48,10 @@ func GenerateStudentSummary(w http.ResponseWriter, id int) {
 	// POST to /api/chat (correct endpoint and structure)
 	resp, err := http.Post("http://localhost:11434/api/chat", "application/json", bytes.NewBuffer(jsonPayload))
 	if err != nil {
-		http.Error(w, "Failed to contact Ollama", http.StatusInternalServerError)
+		json.NewEncoder(w).Encode(map[string]string{
+  "summary": "AI summary is not available in deployed version.",
+})
+
 		return
 	}
 	defer resp.Body.Close()

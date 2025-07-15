@@ -10,6 +10,13 @@ import (
 )
 
 func main() {
+	
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	http.Redirect(w, r, "/students", http.StatusSeeOther)
+})
+
+
+
 	// Route for operations involving multiple students
 	http.HandleFunc("/students", studentsHandler)
 	

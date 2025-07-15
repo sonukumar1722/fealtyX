@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
+	"os"
 )
 
 func main() {
@@ -17,8 +18,14 @@ func main() {
 
 	// Start the server and log if it crashes
 	fmt.Println("🚀 Server running at http://localhost:8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
-}
+	// log.Fatal(http.ListenAndServe(":8080", nil))
+	port := os.Getenv("PORT")
+	if port == "" {
+	    port = "8080"
+	}
+	log.Fatal(http.ListenAndServe(":"+port, nil))
+	
+	}
 
 // Handle requests related to all or multiple students
 func studentsHandler(w http.ResponseWriter, r *http.Request) {

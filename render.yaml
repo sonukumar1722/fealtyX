@@ -1,3 +1,4 @@
+
 services:
 - type: web
   name: student-api
@@ -5,8 +6,9 @@ services:
   repo: https://github.com/sonukumar1722/fealtyX
   plan: free
   envVars:
-  - key: PORT
-    sync: false
+    - key: PORT
+      value: 8080
+      sync: false
   region: oregon
   buildCommand: go build -o main .
   startCommand: ./main
